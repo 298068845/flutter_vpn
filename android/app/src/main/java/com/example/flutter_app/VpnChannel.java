@@ -59,7 +59,6 @@ public class VpnChannel implements MethodChannel.MethodCallHandler {
                     @Override
                     public void run() {
                         Toast.makeText(activity, "connect：" + detectionResult.toString(), Toast.LENGTH_SHORT).show();
-//                        chanelResult.success("succeed:"+detectionResult.toString());
                     }
                 });
 

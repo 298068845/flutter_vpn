@@ -12,5 +12,6 @@ public class MainActivity extends FlutterActivity {
         super.configureFlutterEngine(flutterEngine);
         GeneratedPluginRegistrant.registerWith(flutterEngine);
         VpnChannel.registerWith(flutterEngine,this);
+        WebViewChannel.registerWith(flutterEngine, this);
     }
 }

@@ -187,7 +187,14 @@ class _Page1 extends State<Page1> {
                             borderRadius: BorderRadius.circular(5),
                             child: Image.asset("images/shopbg.png"),
                           ),
-                          onTap: () => otherIntent(context,"other")),
+                          onTap: (){
+                            MethodChannel _methodChannel = const MethodChannel("open/webview");
+                            Map<String, String> data = {
+                              "title": "校园优惠商城",
+                              "urls": "https://s.phone580.com/center/hwcenter/bjkjbh31485.html",
+                            };
+                            _methodChannel.invokeMethod("openWebView", data);
+                          }),
                       const SizedBox(
                         height: 20,
                       ),

@@ -108,7 +108,7 @@ class _Page1 extends State<Page1> {
                                 child: DecoratedBox(
                                     decoration: BoxDecoration(
                                         gradient: LinearGradient(
-                                            colors: [Colors.red, Colors.orange.shade700]),
+                                            colors: [Colors.purple.shade400, Colors.purple.shade200]),
                                         //背景渐变
                                         borderRadius: BorderRadius.circular(5.0),
                                         //3像素圆角
@@ -156,7 +156,7 @@ class _Page1 extends State<Page1> {
                                 ),
                                 child: Padding(
                                   padding:
-                                  const EdgeInsets.symmetric(horizontal: 5, vertical: 30.0),
+                                  const EdgeInsets.symmetric(horizontal: 5, vertical: 17.0),
                                   child: Row(children: <Widget>[
                                     CycleButton(
                                         iconData: Icons.lock,
@@ -185,7 +185,7 @@ class _Page1 extends State<Page1> {
                       GestureDetector(
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(5),
-                            child: Image.asset("images/bg.png"),
+                            child: Image.asset("images/shopbg.png"),
                           ),
                           onTap: () => otherIntent(context,"other")),
                       const SizedBox(
@@ -194,7 +194,7 @@ class _Page1 extends State<Page1> {
                       GestureDetector(
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(5),
-                            child: Image.asset("images/bg.png"),
+                            child: Image.asset("images/simbg.png"),
                           ),
                           onTap: () => otherIntent(context,"other"))
                     ],

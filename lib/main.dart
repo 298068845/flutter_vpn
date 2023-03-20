@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         model: new UserInfo(),
    child: MaterialApp(
       title: '校园VPN',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

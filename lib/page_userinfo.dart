@@ -34,7 +34,6 @@ class Page extends StatefulWidget {
 }
 
 class _Page extends State<Page> {
-  int _count = 0;
 
   @override
   Widget build(BuildContext context) {

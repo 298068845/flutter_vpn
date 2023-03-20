@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/page_bill.dart';
 import 'package:flutter_app/userInfo.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'base_page.dart';
@@ -51,7 +52,7 @@ class _Page1 extends State<Page1> {
                     child: ClipRRect(
                       child: Image.asset("images/login.png"),
                     ),
-                    onTap: () => otherIntent(context)),
+                    onTap: () => otherIntent(context,"other")),
                  Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(
@@ -123,7 +124,7 @@ class _Page1 extends State<Page1> {
                                       child: Column(
                                         children: const [
                                           Icon(
-                                            Icons.home,
+                                            Icons.shopping_bag,
                                             color: Colors.white,
                                           ),
                                           SizedBox(
@@ -136,7 +137,7 @@ class _Page1 extends State<Page1> {
                                         ],
                                       ),
                                     )),
-                                onTap: () => otherIntent(context),
+                                onTap: () => otherIntent(context,"other"),
                               )),
                         ],
                       ),
@@ -160,19 +161,19 @@ class _Page1 extends State<Page1> {
                                     CycleButton(
                                         iconData: Icons.lock,
                                         title: "宿舍门锁",
-                                        onTap: () => otherIntent(context)),
+                                        onTap: () => otherIntent(context,"宿舍门锁")),
                                     CycleButton(
                                         iconData: Icons.border_color,
                                         title: "归宿签到",
-                                        onTap: () => otherIntent(context)),
+                                        onTap: () => otherIntent(context,"归宿签到")),
                                     CycleButton(
                                         iconData: Icons.paypal,
                                         title: "消费账单",
-                                        onTap: () => otherIntent(context)),
+                                        onTap: () => otherIntent(context,"消费账单")),
                                     CycleButton(
                                         iconData: Icons.home_repair_service,
                                         title: "在线装修",
-                                        onTap: () => otherIntent(context)),
+                                        onTap: () => otherIntent(context,"other")),
                                   ]),
                                 )),
                           ),
@@ -186,7 +187,7 @@ class _Page1 extends State<Page1> {
                             borderRadius: BorderRadius.circular(5),
                             child: Image.asset("images/bg.png"),
                           ),
-                          onTap: () => otherIntent(context)),
+                          onTap: () => otherIntent(context,"other")),
                       const SizedBox(
                         height: 20,
                       ),
@@ -195,7 +196,7 @@ class _Page1 extends State<Page1> {
                             borderRadius: BorderRadius.circular(5),
                             child: Image.asset("images/bg.png"),
                           ),
-                          onTap: () => otherIntent(context))
+                          onTap: () => otherIntent(context,"other"))
                     ],
                   ),
                 )
@@ -204,18 +205,45 @@ class _Page1 extends State<Page1> {
     );
   }
 
-  otherIntent(BuildContext context) {
+  otherIntent(BuildContext context,String type) {
     final username =
         ScopedModel.of<UserInfo>(context, rebuildOnChange: true).phoneNum;
     print(username);
     if(username!=null&&username.trim().isNotEmpty){
-      Fluttertoast.showToast(
-          msg: "敬请期待",
-          toastLength: Toast.LENGTH_SHORT,
-          timeInSecForIosWeb: 1,
-          textColor: Colors.white,
-          fontSize: 16.0
-      );
+      switch(type){
+        case "消费账单":
+          Navigator.push(
+              context, MaterialPageRoute(builder: (BuildContext con) => BillPage()));
+          break;
+        case "宿舍门锁":
+          Fluttertoast.showToast(
+              msg: "解锁失败",
+              toastLength: Toast.LENGTH_SHORT,
+              timeInSecForIosWeb: 1,
+              textColor: Colors.white,
+              fontSize: 16.0
+          );
+          break;
+        case "归宿签到":
+          Fluttertoast.showToast(
+              msg: "签到成功",
+              toastLength: Toast.LENGTH_SHORT,
+              timeInSecForIosWeb: 1,
+              textColor: Colors.white,
+              fontSize: 16.0
+          );
+          break;
+        default:
+          Fluttertoast.showToast(
+              msg: "敬请期待",
+              toastLength: Toast.LENGTH_SHORT,
+              timeInSecForIosWeb: 1,
+              textColor: Colors.white,
+              fontSize: 16.0
+          );
+          break;
+      }
+
     }else{
       Navigator.push(
           context, MaterialPageRoute(builder: (BuildContext con) => LoginPage()));
